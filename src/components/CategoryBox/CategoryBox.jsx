@@ -7,7 +7,7 @@ export default function CategoryBox({ props }) {
   return (
     <div
       className="category-box"
-      onClick={() => navigation(`/${props._id}/videos`)}
+      onClick={() => navigation(`/${props?.category}/videos`)}
     >
       <img src={props?.thumbnail} alt={props?._id} />
       <h3>{props?.category}</h3>

@@ -3,19 +3,29 @@ import CategoryBox from "../components/CategoryBox/CategoryBox";
 import Navbar from "../components/Navbar";
 import { useVideos } from "../context/providers/VideoContext";
 import "./HomePage.css";
+import { useEffect, useState } from "react";
+import VideoBox from "../components/VideoBox/VideoBox";
 
 export default function VideoListPage() {
-  const { categoryId } = useParams();
+  const { categoryName } = useParams();
   const { videoState } = useVideos();
+  const [catVideo, setCatVideo] = useState([]);
+
+  useEffect(() => {
+    setCatVideo(
+      videoState?.videoData?.filter((vids) => vids?.category === categoryName)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categoryName]);
 
   return (
     <div className="page-layout">
       <Navbar />
       <div className="right-side">
-        <h2>Videos</h2>
+        <h2>{categoryName}</h2>
         <div className="video-list">
-          {videoState?.categoryData?.map((cat) => (
-            <CategoryBox props={cat} />
+          {catVideo?.map((vids) => (
+            <VideoBox props={vids} />
           ))}
         </div>
       </div>

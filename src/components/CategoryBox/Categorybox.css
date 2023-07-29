@@ -1,0 +1,13 @@
+/* .category-box {
+    display: flex;
+    flex-direction: column;
+} */
+
+.category-box img {
+    width: 246px;
+    height: 138px;
+}
+
+.category-box h3 {
+    margin: 0;
+}

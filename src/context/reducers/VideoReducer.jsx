@@ -31,11 +31,14 @@ export const VideoReducer = (state, action) => {
         .playlistVids.push({ ...action?.video, vidId: uuid() });
       return { ...state };
 
+    // Inside your reducer:
     case "REMOVED_PLAYLIST":
-      state?.playlistData?.filter(
-        (list) => list?.playlistId !== action?.playId
-      );
-      return { ...state };
+      const updatedPlaylistData = state?.playlistData?.filter((list) => {
+        console.log("list.playlistId:", list.playlistId);
+        console.log("action.playId:", action.playId);
+        return list?.playlistId !== action?.playId;
+      });
+      return { ...state, playlistData: updatedPlaylistData };
 
     case "OPEN_MODAL":
       return { ...state, open: true };
@@ -48,6 +51,19 @@ export const VideoReducer = (state, action) => {
 
     case "OPEN_EDIT_MODAL":
       return { ...state, openEdit: true };
+
+    case "OPEN_NOTES_MODAL":
+      return { ...state, openNotes: true };
+
+    case "CLOSE_NOTES_MODAL":
+      return { ...state, openNotes: false };
+
+    case "ADD_NOTES":
+      state.videoData.find((vid) => +vid._id === +action.vidId).notes = [
+        ...state?.videoData?.find((vid) => +vid._id === +action.vidId)?.notes,
+        action.noteData,
+      ];
+      return { ...state };
 
     default:
       return { ...state };

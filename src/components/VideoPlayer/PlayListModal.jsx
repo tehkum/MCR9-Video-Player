@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-export default function PlayListModal({ props }) {
+export default function PlayListModal({ props, show }) {
   const { videoState, videoDispatch } = useVideos();
   const playListInit = {
     playlistName: "",
@@ -27,15 +27,15 @@ export default function PlayListModal({ props }) {
   };
   const [newPlaylistData, setPlaylistData] = React.useState(playListInit);
   //   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    videoDispatch({ type: "OPEN_MODAL" });
-  };
+//   const handleOpen = () => {
+//     videoDispatch({ type: "OPEN_MODAL" });
+//   };
   const handleClose = () => videoDispatch({ type: "CLOSE_MODAL" });
   //   console.log(videoState?.playlistData);
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={videoState?.open}
         onClose={handleClose}
@@ -84,26 +84,32 @@ export default function PlayListModal({ props }) {
           >
             Create New
           </button>
-          <p>or</p>
-          <p>Add To Existing Playlist</p>
-          <ol>
-            {videoState?.playlistData?.map((list) => (
-              <li style={{ display: "flex", justifyContent: "space-between" }}>
-                <p>{list?.playListName}</p>
-                <button
-                  onClick={() =>
-                    videoDispatch({
-                      type: "ADD_TO_PLAYLIST",
-                      video: { ...props },
-                      playId: list?.playlistId,
-                    })
-                  }
-                >
-                  Add
-                </button>
-              </li>
-            ))}
-          </ol>
+          {!show && (
+            <>
+              <p>or</p>
+              <p>Add To Existing Playlist</p>
+              <ol>
+                {videoState?.playlistData?.map((list) => (
+                  <li
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <p>{list?.playListName}</p>
+                    <button
+                      onClick={() =>
+                        videoDispatch({
+                          type: "ADD_TO_PLAYLIST",
+                          video: { ...props },
+                          playId: list?.playlistId,
+                        })
+                      }
+                    >
+                      Add
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
           <Button
             sx={{ width: "100%", backgroundColor: "orangered", color: "white" }}
             onClick={() => {

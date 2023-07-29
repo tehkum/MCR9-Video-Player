@@ -7,4 +7,5 @@ export const INITIAL_VIDEO = {
   playlistData: [],
   open: false,
   openEdit: false,
+  openNotes: false,
 };

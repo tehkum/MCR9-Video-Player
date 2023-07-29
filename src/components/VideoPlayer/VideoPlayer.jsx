@@ -1,5 +1,3 @@
-// VideoPlayer.js
-
 import React from "react";
 import "./VideoPlayer.css";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
@@ -10,13 +8,9 @@ import { useVideos } from "../../context/providers/VideoContext";
 import { useWatchLater } from "../../context/providers/WatchLaterContext";
 
 export default function VideoPlayer({ props }) {
-  const { videoState, videoDispatch } = useVideos();
+  const { videoDispatch } = useVideos();
   const { removeFromWatchlater, addToWatchlater, watchLaterData } =
     useWatchLater();
-
-  const isVideoInWatchLater = watchLaterData.some(
-    (item) => item?._id === props?._id
-  );
 
   return (
     <div className="video-player">
@@ -39,13 +33,13 @@ export default function VideoPlayer({ props }) {
           <div onClick={() => videoDispatch({ type: "OPEN_EDIT_MODAL" })}>
             <PlaylistRemoveIcon />
           </div>
-          {isVideoInWatchLater ? (
+          { watchLaterData?.find((item) => item?._id === props?._id) ? (
             <div onClick={() => removeFromWatchlater(props)}>
-              <WatchLaterOutlinedIcon />
+              <WatchLaterIcon />
             </div>
           ) : (
             <div onClick={() => addToWatchlater(props)}>
-              <WatchLaterIcon />
+              <WatchLaterOutlinedIcon />
             </div>
           )}
         </div>

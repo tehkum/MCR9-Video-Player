@@ -8,9 +8,10 @@ import PlayListModal from "../components/VideoPlayer/PlayListModal";
 import EditPlayListModal from "../components/VideoPlayer/EditPlaylistModal";
 
 export default function VideoPage() {
-  const { categoryName, videoId } = useParams();
-  const { videoState } = useVideos();
+  const { videoId } = useParams();
+  const { videoState, videoDispatch } = useVideos();
   const [video, setVideo] = useState({});
+  // const [notes, setNotes] = useState("");
 
   useEffect(() => {
     setVideo(videoState?.videoData?.find((vids) => +vids?._id === +videoId));
@@ -22,6 +23,8 @@ export default function VideoPage() {
       <div className="videopage-list">
         <div className="video-tab">
           <VideoPlayer props={video} />
+          <h3>Notes</h3>
+          <div className="video-notes">{videoState.notes}</div>
         </div>
         <div className="more-vids">
           <h2>More Videos:</h2>

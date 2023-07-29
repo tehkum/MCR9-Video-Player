@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 // import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { TextField } from "@mui/material";
 import { useVideos } from "../../context/providers/VideoContext";
 import "./VideoPlayer.css";
 
@@ -18,50 +19,48 @@ const style = {
   p: 4,
 };
 
-export default function EditPlayListModal({ props }) {
+export default function NotesModal({ props, show }) {
   const { videoState, videoDispatch } = useVideos();
+
+  const [notes, setNotes] = React.useState("notes");
   //   const [open, setOpen] = React.useState(false);
-//   const handleOpen = () => {
-//     videoDispatch({ type: "OPEN_EDIT_MODAL" });
-//   };
-  const handleClose = () => videoDispatch({ type: "CLOSE_EDIT_MODAL" });
-  console.log(videoState?.playlistData);
+  //   const handleOpen = () => {
+  //     videoDispatch({ type: "OPEN_MODAL" });
+  //   };
+  const handleClose = () => videoDispatch({ type: "CLOSE_NOTES_MODAL" });
+  //   console.log(videoState?.playlistData);
 
   return (
     <div>
-      {/* <Button onClick={handleOpen}>Open modaq</Button> */}
+      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
-        open={videoState?.openEdit}
+        open={videoState?.open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2>EDIT PLAYLIST</h2>
-          <div>
-            {videoState?.playlistData?.map((list) => (
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <p>{list?.playListName}</p>
-                <button
-                  onClick={() =>
-                    videoDispatch({
-                      type: "REMOVE_PLAYLIST",
-                      playId: list?.playlistId,
-                    })
-                  }
-                >
-                  remove
-                </button>
-              </div>
-            ))}
-          </div>
+          <h2>Add Notes</h2>
+          <TextField
+            id="outlined-basic"
+            label="Name"
+            // value={newPlaylistData?.playlistName}
+            onChange={(e) => setNotes(e.target.value)}
+            variant="outlined"
+            sx={{ width: "100%", margin: "10px 0" }}
+          />
           <Button
             sx={{ width: "100%", backgroundColor: "orangered", color: "white" }}
             onClick={() => {
+              videoDispatch({
+                type: "ADD_NOTES",
+                noteData: notes,
+                vidId: props._id,
+              });
               handleClose();
             }}
           >
-            Done
+            Add
           </Button>
         </Box>
       </Modal>

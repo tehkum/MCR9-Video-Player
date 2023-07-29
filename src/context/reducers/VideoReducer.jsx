@@ -40,6 +40,12 @@ export const VideoReducer = (state, action) => {
       });
       return { ...state, playlistData: updatedPlaylistData };
 
+    case "REMOVE_FROM_PLAYLIST":
+      state.playlistData
+        .find((list) => list.playlistId === action.listId)
+        .playlistVids.filter((list) => list.playId !== action.playId);
+      return { ...state };
+
     case "OPEN_MODAL":
       return { ...state, open: true };
 
@@ -59,11 +65,34 @@ export const VideoReducer = (state, action) => {
       return { ...state, openNotes: false };
 
     case "ADD_NOTES":
-      state.videoData.find((vid) => +vid._id === +action.vidId).notes = [
-        ...state?.videoData?.find((vid) => +vid._id === +action.vidId)?.notes,
-        action.noteData,
-      ];
-      return { ...state };
+      return {
+        ...state,
+        videoData: state.videoData.map((vid) =>
+          +vid._id === +action.vidId ? { ...vid, notes: action.noteData } : vid
+        ),
+      };
+
+    case "EDIT_NOTES":
+      return {
+        ...state,
+        videoData: state.videoData.map((vid) =>
+          +vid._id === +action.vidId ? { ...vid, notes: action.noteData } : vid
+        ),
+      };
+
+    case "ADD_TO_WL":
+      return {
+        ...state,
+        watchLaterData: [...state.watchLaterData, action.Video],
+      };
+
+    case "REMOVE_FROM_WL":
+      return {
+        ...state,
+        watchLaterData: state.watchLaterData.filter(
+          (vid) => vid._id !== action.vidId
+        ),
+      };
 
     default:
       return { ...state };

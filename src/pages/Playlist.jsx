@@ -21,7 +21,7 @@ export default function Playlist() {
       <h2>{playList?.playListName}</h2>
       <div className="video-list">
         {playList?.playlistVids?.map((vids) => (
-          <VideoBox props={vids} />
+          <VideoBox props={vids} deleteVid={true} playlistId={playId} />
         ))}
       </div>
     </div>

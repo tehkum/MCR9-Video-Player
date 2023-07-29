@@ -8,7 +8,7 @@ import { useVideos } from "../../context/providers/VideoContext";
 import { useWatchLater } from "../../context/providers/WatchLaterContext";
 
 export default function VideoPlayer({ props }) {
-  const { videoDispatch } = useVideos();
+  const { videoState, videoDispatch } = useVideos();
   const { removeFromWatchlater, addToWatchlater, watchLaterData } =
     useWatchLater();
 
@@ -33,7 +33,7 @@ export default function VideoPlayer({ props }) {
           <div onClick={() => videoDispatch({ type: "OPEN_EDIT_MODAL" })}>
             <PlaylistRemoveIcon />
           </div>
-          { watchLaterData?.find((item) => item?._id === props?._id) ? (
+          {watchLaterData?.find((item) => item?._id === props?._id) ? (
             <div onClick={() => removeFromWatchlater(props)}>
               <WatchLaterIcon />
             </div>

@@ -8,4 +8,5 @@ export const INITIAL_VIDEO = {
   open: false,
   openEdit: false,
   openNotes: false,
+  watchLaterData: [],
 };

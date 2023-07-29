@@ -19,22 +19,22 @@ const style = {
   p: 4,
 };
 
-export default function NotesModal({ props, show }) {
+export default function NotesModal({ props }) {
   const { videoState, videoDispatch } = useVideos();
 
-  const [notes, setNotes] = React.useState("notes");
+  const [notes, setNotes] = React.useState("");
   //   const [open, setOpen] = React.useState(false);
-  //   const handleOpen = () => {
-  //     videoDispatch({ type: "OPEN_MODAL" });
-  //   };
+  const handleOpen = () => {
+    videoDispatch({ type: "OPEN_MODAL" });
+  };
   const handleClose = () => videoDispatch({ type: "CLOSE_NOTES_MODAL" });
   //   console.log(videoState?.playlistData);
 
   return (
     <div>
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
+      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
-        open={videoState?.open}
+        open={videoState?.openNotes}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -44,7 +44,7 @@ export default function NotesModal({ props, show }) {
           <TextField
             id="outlined-basic"
             label="Name"
-            // value={newPlaylistData?.playlistName}
+            defaultValue={props?.notes}
             onChange={(e) => setNotes(e.target.value)}
             variant="outlined"
             sx={{ width: "100%", margin: "10px 0" }}

@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router";
 import "./VideoBox.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useVideos } from "../../context/providers/VideoContext";
 
-export default function VideoBox({ props }) {
+export default function VideoBox({ props, deleteVid, playlistId }) {
   const navigate = useNavigate();
+  const { videoDispatch } = useVideos();
 
   return (
     <div
@@ -26,6 +29,20 @@ export default function VideoBox({ props }) {
           </p>
         </div>
       </div>
+      {deleteVid && (
+        <div
+          className="delete-btn"
+          onClick={() =>
+            videoDispatch({
+              type: "DELETE_FROM_PLAYLIST",
+              playId: props.vidId,
+              listId: playlistId,
+            })
+          }
+        >
+          <DeleteIcon />
+        </div>
+      )}
     </div>
   );
 }

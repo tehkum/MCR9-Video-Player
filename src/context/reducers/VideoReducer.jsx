@@ -10,6 +10,15 @@ export const VideoReducer = (state, action) => {
         categoryData: categories,
       };
 
+    case "NEW_PLAYLIST":
+      return {
+        ...state,
+        playlistData: [
+          ...state?.playlistData,
+          { playListName: action?.playlistName, playlistVids: [] },
+        ],
+      };
+
     default:
       return { ...state };
   }

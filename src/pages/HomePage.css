@@ -3,3 +3,17 @@
     flex-wrap: wrap;
     gap: 2em;
 }
+
+.video-tab {
+    grid-area: tab;
+}
+
+.more-vids {
+    grid-area: more;
+}
+
+.videopage-list {
+    display: grid;
+    grid-template-areas: 
+    'tab tab more';
+}

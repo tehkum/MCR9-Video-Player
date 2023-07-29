@@ -1,0 +1,20 @@
+.MoreVideoBox {
+    display: flex;
+    width: 300px;
+    align-items: center;
+    gap: 5px;
+}
+
+.MoreVideoBox img {
+    max-width: 100px;
+    max-height: 70px;
+    /* align-self: flex-start; */
+}
+
+.MoreVideoBox p {
+    margin: 0;
+}
+
+.MoreVideoBox-creator {
+    color: #666;
+}

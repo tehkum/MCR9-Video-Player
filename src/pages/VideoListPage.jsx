@@ -1,6 +1,4 @@
 import { useParams } from "react-router";
-import CategoryBox from "../components/CategoryBox/CategoryBox";
-import Navbar from "../components/Navbar";
 import { useVideos } from "../context/providers/VideoContext";
 import "./HomePage.css";
 import { useEffect, useState } from "react";
@@ -19,15 +17,12 @@ export default function VideoListPage() {
   }, [categoryName]);
 
   return (
-    <div className="page-layout">
-      <Navbar />
-      <div className="right-side">
-        <h2>{categoryName}</h2>
-        <div className="video-list">
-          {catVideo?.map((vids) => (
-            <VideoBox props={vids} />
-          ))}
-        </div>
+    <div className="right-side">
+      <h2>{categoryName}</h2>
+      <div className="video-list">
+        {catVideo?.map((vids) => (
+          <VideoBox props={vids} />
+        ))}
       </div>
     </div>
   );

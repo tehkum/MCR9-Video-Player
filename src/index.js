@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { VideoContext, useVideos } from "./context/providers/VideoContext";
+import { WatchLaterProvider } from "./context/providers/WatchLaterContext";
 
 export { useVideos };
 
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <Router>
       <VideoContext>
-        <App />
+        <WatchLaterProvider>
+          <App />
+        </WatchLaterProvider>
       </VideoContext>
     </Router>
   </React.StrictMode>

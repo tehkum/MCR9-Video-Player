@@ -5,4 +5,6 @@ export const INITIAL_VIDEO = {
   videoData: [...videos],
   categoryData: [...categories],
   playlistData: [],
+  open: false,
+  openEdit: false,
 };

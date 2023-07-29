@@ -4,6 +4,8 @@ import "./HomePage.css";
 import { useEffect, useState } from "react";
 import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
 import MoreVideoBox from "../components/MoreVideoBox/MoreVideoBox";
+import PlayListModal from "../components/VideoPlayer/PlayListModal";
+import EditPlayListModal from "../components/VideoPlayer/EditPlaylistModal";
 
 export default function VideoPage() {
   const { categoryName, videoId } = useParams();
@@ -16,20 +18,22 @@ export default function VideoPage() {
   }, [videoId]);
 
   return (
-    // <div className="right-side">
-    <div className="videopage-list">
-      <div className="video-tab">
-        <VideoPlayer props={video} />
-      </div>
-      <div className="more-vids">
-        <h2>More Videos:</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          {videoState?.videoData?.map((vids) => (
-            <MoreVideoBox props={vids} />
-          ))}
+    <>
+      <div className="videopage-list">
+        <div className="video-tab">
+          <VideoPlayer props={video} />
+        </div>
+        <div className="more-vids">
+          <h2>More Videos:</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+            {videoState?.videoData?.map((vids) => (
+              <MoreVideoBox props={vids} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-    // </div>
+      <PlayListModal props={video} />
+      <EditPlayListModal />
+    </>
   );
 }

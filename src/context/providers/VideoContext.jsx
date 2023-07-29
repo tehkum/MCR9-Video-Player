@@ -5,11 +5,10 @@ import { VideoReducer } from "../reducers/VideoReducer";
 export const manageVideo = createContext();
 
 export function VideoContext({ children }) {
-  const [videoState, videoDispacth] = useReducer(VideoReducer, INITIAL_VIDEO);
-
+  const [videoState, videoDispatch] = useReducer(VideoReducer, INITIAL_VIDEO);
 
   return (
-    <manageVideo.Provider value={{ videoState, videoDispacth }}>
+    <manageVideo.Provider value={{ videoState, videoDispatch }}>
       {children}
     </manageVideo.Provider>
   );

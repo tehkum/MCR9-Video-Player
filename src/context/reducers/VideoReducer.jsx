@@ -31,14 +31,13 @@ export const VideoReducer = (state, action) => {
         .playlistVids.push({ ...action?.video, vidId: uuid() });
       return { ...state };
 
-    // Inside your reducer:
     case "REMOVED_PLAYLIST":
-      const updatedPlaylistData = state?.playlistData?.filter((list) => {
-        console.log("list.playlistId:", list.playlistId);
-        console.log("action.playId:", action.playId);
-        return list?.playlistId !== action?.playId;
-      });
-      return { ...state, playlistData: updatedPlaylistData };
+      return {
+        ...state,
+        playlistData: state?.playlistData?.filter((list) => {
+          return list?.playlistId !== action?.playId;
+        }),
+      };
 
     case "REMOVE_FROM_PLAYLIST":
       state.playlistData

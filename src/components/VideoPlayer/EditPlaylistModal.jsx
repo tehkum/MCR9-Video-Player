@@ -45,7 +45,7 @@ export default function EditPlayListModal({ props }) {
                 <button
                   onClick={() =>
                     videoDispatch({
-                      type: "REMOVE_PLAYLIST",
+                      type: "REMOVED_PLAYLIST",
                       playId: list?.playlistId,
                     })
                   }

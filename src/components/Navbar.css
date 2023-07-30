@@ -1,5 +1,14 @@
 .navbar {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    /* padding: 1rem; */
+    /* border-right: 1px solid #666; */
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        /* width: 150px; */
+        /* position: absolute; */
+        /* padding: 1rem; */
+    }
 }

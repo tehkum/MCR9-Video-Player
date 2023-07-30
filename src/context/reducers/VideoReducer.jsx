@@ -39,7 +39,7 @@ export const VideoReducer = (state, action) => {
         }),
       };
 
-    case "REMOVE_FROM_PLAYLIST":
+    case "DELETE_FROM_PLAYLIST":
       state.playlistData
         .find((list) => list.playlistId === action.listId)
         .playlistVids.filter((list) => list.playId !== action.playId);

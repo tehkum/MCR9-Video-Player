@@ -4,11 +4,14 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 
 function App() {
-  return (
-    <div className="container">
-      <div className="head-grid">
+  return (<>
+  <div className="head-grid">
         <Header />
       </div>
+    <div className="container">
+      {/* <div className="head-grid">
+        <Header />
+      </div> */}
         <div className="nav-bar-grid">
           <Navbar />
         </div>
@@ -16,7 +19,7 @@ function App() {
           <AllRoutes />
         </div>
       </div>
-  );
+ </> );
 }
 
 export default App;

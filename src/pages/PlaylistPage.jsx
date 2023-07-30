@@ -1,6 +1,7 @@
 import PlaylistBox from "../components/CategoryBox/PlaylistBox";
 import PlayListModal from "../components/VideoPlayer/PlayListModal";
 import { useVideos } from "../context/providers/VideoContext";
+import AddIcon from "@mui/icons-material/Add";
 
 export default function PlaylistPage() {
   const { videoState, videoDispatch } = useVideos();
@@ -26,7 +27,7 @@ export default function PlaylistPage() {
             }}
             onClick={() => videoDispatch({ type: "OPEN_MODAL" })}
           >
-            +
+            <AddIcon />
           </span>
         </div>
       </div>

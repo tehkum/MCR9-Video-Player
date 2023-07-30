@@ -24,15 +24,14 @@ export default function NotesModal({ props }) {
 
   const [notes, setNotes] = React.useState("");
   //   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    videoDispatch({ type: "OPEN_MODAL" });
-  };
+  // const handleOpen = () => {
+  //   videoDispatch({ type: "OPEN_MODAL" });
+  // };
   const handleClose = () => videoDispatch({ type: "CLOSE_NOTES_MODAL" });
   //   console.log(videoState?.playlistData);
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+    <div style={{ color: "black" }}>
       <Modal
         open={videoState?.openNotes}
         onClose={handleClose}
@@ -40,7 +39,7 @@ export default function NotesModal({ props }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2>Add Notes</h2>
+          <h2 style={{ color: "black" }}>Add Notes</h2>
           <TextField
             id="outlined-basic"
             label="Name"

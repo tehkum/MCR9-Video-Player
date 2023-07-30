@@ -34,7 +34,7 @@ export default function PlayListModal({ props, show }) {
   //   console.log(videoState?.playlistData);
 
   return (
-    <div>
+    <div style={{color: "black"}}>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={videoState?.open}
@@ -43,7 +43,7 @@ export default function PlayListModal({ props, show }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2>Add To Playlist</h2>
+          <h2 style={{color: "black"}}>Add To Playlist</h2>
           <p>Create New Playlist</p>
           <TextField
             id="outlined-basic"

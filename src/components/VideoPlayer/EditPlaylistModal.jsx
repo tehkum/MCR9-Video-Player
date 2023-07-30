@@ -28,7 +28,7 @@ export default function EditPlayListModal({ props }) {
   console.log(videoState?.playlistData);
 
   return (
-    <div>
+    <div style={{color: "black"}}>
       {/* <Button onClick={handleOpen}>Open modaq</Button> */}
       <Modal
         open={videoState?.openEdit}
@@ -37,7 +37,7 @@ export default function EditPlayListModal({ props }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2>EDIT PLAYLIST</h2>
+          <h2 style={{color: "black"}}>EDIT PLAYLIST</h2>
           <div>
             {videoState?.playlistData?.map((list) => (
               <div style={{ display: "flex", justifyContent: "space-between" }}>

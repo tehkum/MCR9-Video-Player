@@ -1,18 +1,44 @@
-.head-grid {
+/* .head-grid {
   grid-area: head;
 }
 
 .nav-bar-grid {
   grid-area: nav;
+  width: 200px;
+  padding: 1rem;
+  border-right: 2px solid #666;
+  height: 100%;
 }
 
 .pages-grid {
   grid-area: pages;
+} */
+
+.nav-bar-grid {
+  border-right: 2px solid #666;
+  min-height: 90vh;
+
+}
+
+.pages-grid {
+  padding: 0.5rem;
+  max-height: 88vh;
+  overflow: auto;
+}
+
+.pages-grid::-webkit-scrollbar {
+  /* width: 5px;
+  border-radius: 15px;
+  color: grey */
+  /* background-color: red;
+  color: white */
 }
 
 .container {
   display: grid;
-  grid-template-areas:
-    'head head head'
-    'nav pages pages';
+  /* grid-template-areas:
+    'head head'
+    'nav pages'
+    'nav pages'; */
+  grid-template-columns: 200px auto;
 }

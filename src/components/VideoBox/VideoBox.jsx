@@ -13,17 +13,16 @@ export default function VideoBox({ props, deleteVid, playlistId }) {
     useWatchLater();
 
   return (
-    <div
-      className="video-box"
-    >
+    <div className="video-box">
       <img
         src={props?.thumbnail}
         alt={props?.title}
-      onClick={() => navigate(`/${props.category}/video/${props?._id}`)}
-      className="vid-box-main-img"
+        onClick={() => navigate(`/${props.category}/video/${props?._id}`)}
+        className="vid-box-main-img"
       />
-      <div className="video-details-layout"
-      onClick={() => navigate(`/${props.category}/video/${props?._id}`)}
+      <div
+        className="video-details-layout"
+        onClick={() => navigate(`/${props.category}/video/${props?._id}`)}
       >
         <img src="https://picsum.photos/200/300" alt="..." />
         <div className="video-details">
@@ -42,7 +41,7 @@ export default function VideoBox({ props, deleteVid, playlistId }) {
           onClick={() =>
             videoDispatch({
               type: "DELETE_FROM_PLAYLIST",
-              playId: props.vidId,
+              playId: props.playId,
               listId: playlistId,
             })
           }

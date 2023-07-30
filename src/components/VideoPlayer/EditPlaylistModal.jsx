@@ -21,14 +21,14 @@ const style = {
 export default function EditPlayListModal({ props }) {
   const { videoState, videoDispatch } = useVideos();
   //   const [open, setOpen] = React.useState(false);
-//   const handleOpen = () => {
-//     videoDispatch({ type: "OPEN_EDIT_MODAL" });
-//   };
+  //   const handleOpen = () => {
+  //     videoDispatch({ type: "OPEN_EDIT_MODAL" });
+  //   };
   const handleClose = () => videoDispatch({ type: "CLOSE_EDIT_MODAL" });
   console.log(videoState?.playlistData);
 
   return (
-    <div style={{color: "black"}}>
+    <div style={{ color: "black" }}>
       {/* <Button onClick={handleOpen}>Open modaq</Button> */}
       <Modal
         open={videoState?.openEdit}
@@ -37,11 +37,11 @@ export default function EditPlayListModal({ props }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2 style={{color: "black"}}>EDIT PLAYLIST</h2>
+          <h2 style={{ color: "black" }}>EDIT PLAYLIST</h2>
           <div>
             {videoState?.playlistData?.map((list) => (
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <p>{list?.playListName}</p>
+                <p style={{ color: "black" }}>{list?.playListName}</p>
                 <button
                   onClick={() =>
                     videoDispatch({

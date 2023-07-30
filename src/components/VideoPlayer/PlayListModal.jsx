@@ -93,7 +93,7 @@ export default function PlayListModal({ props, show }) {
                   <li
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <p>{list?.playListName}</p>
+                    <p style={{color: "black"}}>{list?.playListName}</p>
                     <button
                       onClick={() =>
                         videoDispatch({
